@@ -130,8 +130,7 @@ public class OsxBuildTools
         // generate non-relocatable component pkg. this will be included into a product archive
         var pkgPlistPath = Path.Combine(tmp, "tmp.plist");
         Exe.InvokeAndThrowIfNonZero("pkgbuild", new[] { "--analyze", "--root", tmpPayload1, pkgPlistPath }, null);
-        Exe.InvokeAndThrowIfNonZero("plutil", new[] { "-replace", "0.BundleIsRelocatable", "-bool", "NO", pkgPlistPath },  #null);
-        //Exe.InvokeAndThrowIfNonZero("plutil", new[] { "-replace", "BundleIsRelocatable", "-bool", "NO", pkgPlistPath }, null);
+        Exe.InvokeAndThrowIfNonZero("plutil", new[] { "-replace", "0.BundleIsRelocatable", "-bool", "NO", pkgPlistPath }, null);
         progress(50);
 
         var pkg1Path = Path.Combine(tmpPayload2, "1.pkg");
